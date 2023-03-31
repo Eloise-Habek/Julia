@@ -24,7 +24,7 @@ function freeFallput(v0,t0,dt,tk)
         append!(br,vi)
         dvdt = deriva(vi)
         vi = vi + dvdt*deltaT
-        s = s-vi*deltaT
+        s = s-vi*deltaT #podrazumijeva se da skacemo od 0 visine
         ti = ti+deltaT
     end
     return br,vrijeme,put
