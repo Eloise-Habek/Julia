@@ -9,13 +9,13 @@ function SIRS(du,u,p,t)
     du[3] = gamma*u[2] - delta*u[3]
 end
 
-S = 4065253 #prema popisu stanovništva hrv u 2019.
-I = 1
+S = 4065253 #pronađena statistika o procjeni broja stanovnika u hrv 2019.
+I = 1 #pretpostavimo da zaraza u hrv počinje od jedne osobe
 R = 0
-k = 12
-b = 0.05
+k = 10 #pretpostavka je da su ljudi u kontaktu s otp 10 osoba na dan
+b = 0.6 #razni izvora govore da je gripa visoko zarazne u izravnom kontaktu
 t_gubiimunitet = 90 #pojedinac gubi imunitet nakon 90 dana
-t_oporavka = 10 #pojedina se oporavi nakon 10 dana
+t_oporavka = 7 #pojedina se oporavi nakon 10 dana
 
 N = I + S + R
 delta = 1/t_gubiimunitet
