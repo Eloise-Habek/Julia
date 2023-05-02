@@ -9,14 +9,14 @@ function SIRdemo(du,u,p,t)
     du[3] = gamma*u[2] - ami*u[3]
 end
 
-S = 4065253
-I = 1
+S = 4065253 #pronađena statistika o procjeni broja stanovnika u hrv 2019.
+I = 1 #pretpostavimo da zaraza u hrv počinje od jedne osobe
 R = 0
-k = 12
-b = 0.05
+k = 10 #pretpostavka je da su ljudi u kontaktu s otp 10 osoba na dan
+b = 0.6 #razni izvora govore da je gripa visoko zarazne u izravnom kontaktu
 natalitet = 8.9/1000 #stopa nataliteta u 2019. /1000 jer je stopa na 1000 stanovnika
 mortalitet = 12.7/1000 #stopa mortaliteta u 2019. /1000 jer je stopa na 1000 stanovnika
-t_oporavka = 10
+t_oporavka = 7
 
 N = I + S + R
 beta = (k*b)/N
