@@ -14,7 +14,7 @@ I = 1 #pretpostavimo da zaraza u hrv počinje od jedne osobe
 R = 0
 k = 12
 b = 0.05
-t_oporavka = 10
+t_oporavka = 7
 
 N = I + S + R
 beta = (k*b)/N
