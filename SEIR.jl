@@ -2,12 +2,13 @@
 using DifferentialEquations
 using Plots
 
-function SIR(du,u,p,t)
+function SEIR(du,u,p,t)
     beta,gamma,mi,ami,N,kappa,v = p
-    du[1] = -beta*u[1]*u[2] + (mi-kappa)*N - ami*u[1]
-    du[2] = v*u[4]-gamma*u[2]- ami*u[2]
-    du[3] = gamma*u[2] - ami*u[3]
-    du[4] = beta*u[1]*u[2] - v*u[4]-ami*u[4]
+    du[1] = -beta*u[1]*u[3] + (mi-kappa)*N - ami*u[1]
+    du[2] = beta*u[1]*u[3] - v*u[2]-ami*u[2]
+    du[3] = v*u[2]-gamma*u[3]- ami*u[3]
+    du[4] = gamma*u[3] - ami*u[4]
+    
 end
 
 S = 4065253 #pronađena statistika o procjeni broja stanovnika u hrv 2019.
@@ -28,12 +29,12 @@ v = 1/2 #stopa prijelaza iz E u I, ovaj period mozemo interpretirati
 
 
 p = (beta,gamma,natalitet,mortalitet,N,kappa,v)
-u0 = [S;I;R;E]
+u0 = [S;E;I;R]
 tspan = (0.0,100)
-problem = ODEProblem(SIR,u0,tspan,p);
+problem = ODEProblem(SEIR,u0,tspan,p);
 sol = solve(problem)
 
-plot(sol,vars = (0,1),title = "SIR",label = "S")
-plot!(sol,vars = (0,2),label = "I")
-plot!(sol,vars = (0,3),label = "R")
-plot!(sol,vars = (0,4),label = "E")
+plot(sol,vars = (0,1),title = "SEIR",label = "S")
+plot!(sol,vars = (0,2),label = "E")
+plot!(sol,vars = (0,3),label = "I")
+plot!(sol,vars = (0,4),label = "R")
