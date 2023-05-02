@@ -15,7 +15,7 @@ R = 0
 k = 10 #pretpostavka je da su ljudi u kontaktu s otp 10 osoba na dan
 b = 0.6 #razni izvora govore da je gripa visoko zarazne u izravnom kontaktu
 t_gubiimunitet = 90 #pojedinac gubi imunitet nakon 90 dana
-t_oporavka = 7 #pojedina se oporavi nakon 10 dana
+t_oporavka = 7 #pojedinac se oporavi nakon otp 7 dana
 
 N = I + S + R
 delta = 1/t_gubiimunitet
