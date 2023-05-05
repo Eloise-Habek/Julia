@@ -33,6 +33,7 @@ u0 = [0.0,0.0]
 tspan = (0.0,50.0)
  #lista mogućih težina koje trebamo razmatrati
 
+
 MasaK = Dict()
 for i in 60:5:80
     m = i
@@ -60,3 +61,5 @@ end
 
 current()
 ##
+
+##POTREBNO ZAKOMENTIRATI 
