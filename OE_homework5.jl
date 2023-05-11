@@ -35,17 +35,17 @@ tspan = (0.0,50.0)
 
 
 MasaK = Dict()
-for i in 60:5:80
+for i in 60:5:80 #isprobati svaku kominaciju mase i koeficijenta K 
     m = i
-    for j = 50:150
+    for j = 50:150 #pretpostavka da će K biti između 50 i 150
         k = j
         p = (L,cd,m,k,gamma)
         problem = ODEProblem(skok,u0,tspan,p)
         sol = solve(problem)
-        if(maximum(sol)<55 && maximum(sol)>=54)
-            if haskey(MasaK,m)
+        if(maximum(sol)<55 && maximum(sol)>=54) #tražimo K takav da je maksimalna dosegnuta visina (tj. u ovom slučaju najdublje može skočiti do 55m ali ne uključujući)
+            if haskey(MasaK,m) #upisujem u mapi ako zadovoljava
                 if(MasaK[m][1]<k)
-                    MasaK[m] = [k,sol]
+                    MasaK[m] = [k,sol] #želimo omogućiti da isključivo kombinacija mase i k upisujemo za x koji je najveći tj najbliži 55
                 end
             else
                 MasaK[m] = [k,sol]
@@ -55,11 +55,9 @@ for i in 60:5:80
 end 
 plot(title = "bungee skok")
 for key in keys(MasaK)
-    plot!(MasaK[key][2], vars = (0,1), label="$key")
+    plot!(MasaK[key][2], vars = (0,1), label="$key") #ispisane putanje za sve mase s korespondentnim K
 
 end
 
 current()
 ##
-
-##POTREBNO ZAKOMENTIRATI 
